@@ -15,6 +15,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+
     @Test
     public void shouldBeTwo() {
         Radio rad = new Radio();
