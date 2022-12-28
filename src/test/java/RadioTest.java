@@ -30,89 +30,6 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldBeZeroWhenAboveNine() {
-        Radio rad = new Radio();
-
-        rad.setRadioStation(9);
-
-        rad.prev(10);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void whenPrevLowerThenExpected() {
-        Radio rad = new Radio();
-
-        rad.setRadioStation(9);
-
-        rad.prev(8);
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void whenSetIsNotRightForPrev() {
-        Radio rad = new Radio();
-
-        rad.setRadioStation(2);
-
-        rad.prev(10);
-
-        int expected = 2;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldBeNineAnder() {
-        Radio rad = new Radio();
-
-        rad.next(-1);
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void whenSetIsNotRightForNext() {
-        Radio rad = new Radio();
-
-        rad.setRadioStation(2);
-
-        rad.next(-1);
-
-        int expected = 2;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void whenNextHigherThenExpected() {
-        Radio rad = new Radio();
-
-        rad.setRadioStation(0);
-
-        rad.next(2);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-
-    @Test
     public void shouldBeSameAnder() {
         Radio rad = new Radio();
 
@@ -220,5 +137,90 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void shouldBeZeroWhenAboveNine() {
+        Radio rad = new Radio();
+
+        rad.setRadioStation(9);
+
+        rad.prev();
+
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void shouldBeNineAnder() {
+        Radio rad = new Radio();
+
+        rad.next();
+
+        int expected = 9;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldTurnNextStation() {
+        Radio rad = new Radio();
+
+        rad.setRadioStation(8);
+
+        rad.prev();
+
+        int expected = 9;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldTurnLastStation() {
+        Radio rad = new Radio();
+
+        rad.setRadioStation(1);
+
+        rad.next();
+
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldTurnLastStation12() {
+        Radio rad = new Radio();
+
+        rad.setRadioStation(8);
+
+        rad.prev();
+
+        int expected = 9;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldTurnLastStation21() {
+        Radio rad = new Radio();
+
+        rad.setRadioStation(1);
+
+        rad.next();
+
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 
 }
