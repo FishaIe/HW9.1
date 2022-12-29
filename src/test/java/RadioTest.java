@@ -167,7 +167,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldTurnNextStation() {
+    public void shouldTurnNextStationMax() {
         Radio rad = new Radio();
 
         rad.setRadioStation(8);
@@ -180,8 +180,24 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+
     @Test
-    public void shouldTurnLastStation() {
+    public void shouldTurnNextStationMin() {
+        Radio rad = new Radio();
+
+        rad.setRadioStation(0);
+
+        rad.prev();
+
+        int expected = 1;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void shouldTurnLastStationMin() {
         Radio rad = new Radio();
 
         rad.setRadioStation(1);
@@ -195,28 +211,14 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldTurnLastStation12() {
+    public void shouldTurnLastStationMax() {
         Radio rad = new Radio();
 
-        rad.setRadioStation(8);
-
-        rad.prev();
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldTurnLastStation21() {
-        Radio rad = new Radio();
-
-        rad.setRadioStation(1);
+        rad.setRadioStation(9);
 
         rad.next();
 
-        int expected = 0;
+        int expected = 8;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
