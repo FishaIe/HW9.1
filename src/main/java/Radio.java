@@ -23,7 +23,7 @@ public class Radio {
             currentRadioStation = 0;
             return;
         }
-        if (currentRadioStation < 9) {
+        else {
             currentRadioStation = currentRadioStation + 1;
         }
     }
@@ -33,7 +33,7 @@ public class Radio {
             currentRadioStation = 9;
             return;
         }
-        if (currentRadioStation > 0) {
+        else {
             currentRadioStation = currentRadioStation - 1;
         }
     }
