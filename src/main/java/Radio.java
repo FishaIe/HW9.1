@@ -1,6 +1,16 @@
 public class Radio {
+
+    private int maxRadioStation = 10;
+    private int minRadioStation = 0;
     private int currentRadioStation;
     private int currentRadioVolume;
+
+    public Radio(int maxRadioStation){
+        this.maxRadioStation = maxRadioStation;
+    }
+
+    public Radio(){
+    }
 
     public int getCurrentStation() {
         return currentRadioStation;
@@ -10,17 +20,25 @@ public class Radio {
         return currentRadioVolume;
     }
 
+    public int getMaxRadioStation() {
+        return maxRadioStation;
+    }
+
+    public int getMinRadioStation() {
+        return minRadioStation;
+    }
+
     public void setRadioStation(int newCurrentStation) {
-        if (newCurrentStation < 0 | newCurrentStation > 9) {
+        if (newCurrentStation < minRadioStation | newCurrentStation >= maxRadioStation) {
             return;
         }
 
         currentRadioStation = newCurrentStation;
     }
 
-    public void prev() {
-        if (currentRadioStation == 9) {
-            currentRadioStation = 0;
+    public void next() {
+        if (currentRadioStation == maxRadioStation - 1) {
+            currentRadioStation = minRadioStation;
             return;
         }
         else {
@@ -28,9 +46,9 @@ public class Radio {
         }
     }
 
-    public void next() {
-        if (currentRadioStation == 0) {
-            currentRadioStation = 9;
+    public void prev() {
+        if (currentRadioStation == minRadioStation) {
+            currentRadioStation = maxRadioStation - 1;
             return;
         }
         else {
@@ -39,7 +57,7 @@ public class Radio {
     }
 
     public void setVolume(int newVolume) {
-        if (newVolume > 10) {
+        if (newVolume > 100) {
             return;
         }
         if (newVolume < 0) {
@@ -49,8 +67,8 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentRadioVolume < 10) {
-            currentRadioVolume += currentRadioVolume;
+        if (currentRadioVolume < 100) {
+            currentRadioVolume = currentRadioVolume + 1;
         }
         return;
     }
